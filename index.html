@@ -1,19 +1,83 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-  </body>
+<head>
+    <title>FullContact Bulk Person Client</title>
+    <link href="styles/main.css" rel="stylesheet" type="text/css">
 
-  <script>
+    <link rel="stylesheet" href="styles/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="styles/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+</head>
+
+
+<body class="body-style">
+<div class="container-div">
+
+    <h1 class="title">
+        <label class="main-h1-style" for="fullcontact-api-key">FULLCONTACT API KEY</label>
+    </h1>
+
+
+    <h2 class="title-two">
+        <div>
+            Instructions
+        </div>
+    </h2>
+
+    <h5 class="body">
+
+        <p>
+            1. Get API key from Full Contact
+            Press the "Save Key" button so you do not have to keep reentering.
+        </p>
+
+        <p>
+        <div> 2. Insert CSV with only a list of emails</div>
+        </p>
+
+        <p>
+        <div> 3. Click "Perfrom Request" to scrape data!</div>
+        </p>
+
+    </h5>
+    <input class="key" id="fullcontact-api-key" type="text">
+
+    <div>
+        <button class="btn btn-default btn-savekey" id="save-api-key">Save Key</button>
+        <button class="btn-savekey btn btn-default" aria-label="Left Align"
+                id="load-api-key">Load Key
+        </button>
+    </div>
+
+    <div>
+	<textarea class="response" readonly id="sample-csv-data">
+	</textarea>
+    </div>
+
+    <div>
+        <button class="select-csv btn btn-default" id="select-csv">Select CSV</button>
+    </div>
+
+
+    <div>
+        <textarea class="last" readonly id="fullcontact-response-data"></textarea>
+    </div>
+
+    <div>
+        <button class="perform btn btn-default" id="perform-fullcontact-request">Perform Request</button>
+    </div>
+
+</div>
+
+
+</body>
+
+<script>
     // You can also require other files to run in this process
     require('./renderer.js')
-  </script>
+</script>
 </html>
