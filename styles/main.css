@@ -63,8 +63,9 @@ textarea.last {
 	margin-top:30px;
 }
 
-button.perform{
-	width:100%;
-  	color: black;
-  	font-size: 10px;
-  	margin-top: 4px;
+button.perform {
+	width: 100%;
+	color: black;
+	font-size: 10px;
+	margin-top: 4px;
+}
