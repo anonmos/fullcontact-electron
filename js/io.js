@@ -1,11 +1,4 @@
-function IO() {
-    this.fileSystemOptions = {
-        type: "openFile",
-        accepts: [{extensions: ['csv']}],
-        acceptsAllTypes: false,
-        acceptsMultiple: false
-    };
-}
+function IO() {}
 
 IO.prototype.readInCsvFile = function (selectedFile) {
     let mainContext = this;
@@ -56,18 +49,19 @@ IO.prototype.readFile = function (selectedFile) {
 };
 
 IO.prototype.sendBatchPeopleRequest = function (apiKey) {
+    let mainContext = this;
     return new Promise(function (resolve, reject) {
-        if (this.csvData && apiKey.value.length > 0) {
+        if (mainContext.csvData && apiKey.length > 0) {
             let ajax = new XMLHttpRequest();
             let requestBody = {};
-            requestBody.requests = this.generateRequests();
-            ajax.open("POST", "https://api.fullcontact.com/v2/batch.json?apiKey=" + apiKey.value);
+            requestBody.requests = mainContext.generateRequests();
+            ajax.open("POST", "https://api.fullcontact.com/v2/batch.json?apiKey=" + apiKey);
             ajax.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
             ajax.onreadystatechange = function () {
                 if (ajax.readyState === XMLHttpRequest.DONE && ajax.status === 200) {
-                    this.peopleResponse = ajax.responseText;
-                    resolve(this.peopleResponse);
+                    mainContext.peopleResponse = ajax.responseText;
+                    resolve(mainContext.peopleResponse);
                 }
                 else if (ajax.readyState === XMLHttpRequest.DONE && ajax.status !== 200) {
                     reject('Oops!  Something went wrong with the request to Fullcontact.  Please seek developer assistance.');
