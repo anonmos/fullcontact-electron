@@ -1,5 +1,3 @@
-console.log("Runner Loaded!");
-
 const IO = require('./js/io');
 
 let csvInputButton = document.getElementById('select-csv');
@@ -10,13 +8,13 @@ let apiKeySaveButton = document.getElementById('save-api-key');
 let apiKeyLoadButton = document.getElementById('load-api-key');
 let fullContactSubmitButton = document.getElementById('perform-fullcontact-request');
 
-csvInputButton.addEventListener('click', onClickReadCsvFile);
+csvInputButton.addEventListener('change', onChangeReadCsvFile);
 fullContactSubmitButton.addEventListener('click', onClickSubmitFullContactRequestButton);
 apiKeySaveButton.addEventListener('click', onClickSaveApiKey);
 apiKeyLoadButton.addEventListener('click', onClickLoadApiKey);
 
-function onClickReadCsvFile() {
-    IO.readInCsvFile().then(function (data) {
+function onChangeReadCsvFile(evt) {
+    IO.readInCsvFile(evt.target.files).then(function (data) {
         parsedCsvTextArea.value = data;
     });
 }
