@@ -33,5 +33,5 @@ function onClickSaveApiKey() {
 }
 
 function onClickLoadApiKey() {
-    apiKeyLoadButton.value = IO.loadApiKey();
+    fullContactApiKeyInput.value = IO.loadApiKey();
 }

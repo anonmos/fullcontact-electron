@@ -107,14 +107,11 @@ IO.prototype.generateRequests = function() {
 };
 
 IO.prototype.saveApiKey = function(key) {
-  chrome.storage.sync.set({'apiKey': key}, function (data) {
-  });
+  localStorage.setItem('apiKey', key);
 };
 
 IO.prototype.loadApiKey = function() {
-  chrome.storage.sync.get('apiKey', function (values) {
-    return values.apiKey;
-  });
+  return localStorage.getItem('apiKey');
 };
 
 module.exports = new IO();
