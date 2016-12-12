@@ -116,3 +116,5 @@ IO.prototype.loadApiKey = function() {
     return values.apiKey;
   });
 };
+
+module.exports = new IO();
