@@ -1,3 +1,4 @@
+const {ipcRenderer} = require('electron');
 const IO = require('./js/io');
 const CsvParser = require('./js/csv_parser');
 
@@ -39,5 +40,16 @@ function onClickLoadApiKey() {
 }
 
 function onClickParseCsvButton() {
+
+    //Have to retrieve the downloads path from main.js, as it is the only thing with
+    //access to the app context
+    let downloadPath = ipcRenderer.sendSync('ipc-main-channel');
+    let pathSlash = downloadPath.includes('\\') ? '\\' : '/';
+
+    if (downloadPath[downloadPath.length - 1] !== pathSlash) {
+        downloadPath += pathSlash;
+    }
+
+    CsvParser.setDownloadPath(downloadPath);
     CsvParser.saveJsonDataAsCsvs(fullContactResponseTextArea.value);
 }

@@ -1,9 +1,11 @@
-function CsvParser() {
-}
+function CsvParser() {}
 
 let fs = require('fs');
-const electron = require('electron');
-let documentsFolder = electron.app.getPath('documents') + "/";
+let documentsFolder = null;
+
+CsvParser.prototype.setDownloadPath = function(path) {
+    documentsFolder = path;
+};
 
 CsvParser.prototype.saveJsonDataAsCsvs = function (jsonData) {
     let EMAIL_BULK_REQUEST_PREFIX = "https://api.fullcontact.com/v2/person.json?email=";
@@ -355,4 +357,4 @@ function writeDigitalFootprint(overallDigitalFootprintFile, digitalFootprintHead
     }
 }
 
-modules.export = new CsvParser();
+module.exports = new CsvParser();
