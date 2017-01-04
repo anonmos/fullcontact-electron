@@ -25,7 +25,7 @@ function onChangeReadCsvFile(evt) {
 }
 
 function onClickSubmitFullContactRequestButton() {
-    IO.sendBatchPeopleRequest(fullContactApiKeyInput.value)
+    IO.sendAllBatchPeopleRequests(fullContactApiKeyInput.value)
         .then(function (data) {
             fullContactResponseTextArea.value = data;
         });

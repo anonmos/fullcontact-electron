@@ -48,20 +48,49 @@ IO.prototype.readFile = function (selectedFile) {
     });
 };
 
-IO.prototype.sendBatchPeopleRequest = function (apiKey) {
+IO.prototype.sendAllBatchPeopleRequests = function (apiKey) {
+    let MAXIMUM_BATCH_REQUEST_SIZE = 20;    //Fullcontact only allows batch requests of 20 emails at a time
+
     let mainContext = this;
+
+    return new Promise(function(resolve, reject) {
+        let requestUrls = mainContext.generateRequests();
+
+        let requestPromises = [];
+
+        for (let i = 0; i < requestUrls.length; i += MAXIMUM_BATCH_REQUEST_SIZE) {
+            let truncatedRequests = requestUrls.slice(i, i + MAXIMUM_BATCH_REQUEST_SIZE);
+
+            requestPromises.push(mainContext.sendTruncatedBatchRequest(apiKey, truncatedRequests));
+        }
+
+        Promise.all(requestPromises)
+            .then(function(values) {
+                let finalResult = JSON.parse(values[0]);
+
+                for (let i = 1; i < values.length; ++i) {
+                    Object.assign(finalResult.responses, values[i].responses);
+                }
+
+                mainContext.peopleResponse = finalResult;
+
+                resolve(JSON.stringify(finalResult));
+            });
+    });
+};
+
+IO.prototype.sendTruncatedBatchRequest = function (apiKey, truncatedRequests) {
     return new Promise(function (resolve, reject) {
         if (mainContext.csvData && apiKey.length > 0) {
             let ajax = new XMLHttpRequest();
             let requestBody = {};
-            requestBody.requests = mainContext.generateRequests();
+            requestBody.requests = truncatedRequests;
             ajax.open("POST", "https://api.fullcontact.com/v2/batch.json?apiKey=" + apiKey);
             ajax.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
             ajax.onreadystatechange = function () {
                 if (ajax.readyState === XMLHttpRequest.DONE && ajax.status === 200) {
-                    mainContext.peopleResponse = ajax.responseText;
-                    resolve(mainContext.peopleResponse);
+                    resolve(ajax.responseText);
                 }
                 else if (ajax.readyState === XMLHttpRequest.DONE && ajax.status !== 200) {
                     reject('Oops!  Something went wrong with the request to Fullcontact.  Please seek developer assistance.');
