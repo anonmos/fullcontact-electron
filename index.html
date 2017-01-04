@@ -17,33 +17,9 @@
 <body class="body-style">
 <div class="container-div">
 
-    <h1 class="title">
-        <label class="main-h1-style" for="fullcontact-api-key">FULLCONTACT API KEY</label>
-    </h1>
-
-
-    <h2 class="title-two">
-        <div>
-            Instructions
-        </div>
-    </h2>
-
-    <h5 class="body">
-
-        <p>
-            1. Get API key from Full Contact
-            Press the "Save Key" button so you do not have to keep reentering.
-        </p>
-
-        <p>
-        <div> 2. Insert CSV with only a list of emails</div>
-        </p>
-
-        <p>
-        <div> 3. Click "Perfrom Request" to scrape data!</div>
-        </p>
-
-    </h5>
+    <h2>FULLCONTACT API CLIENT</h2>
+    <div class="instructions">1. Retrieve your API key from FullContact's Developer Portal and paste it in the box below.
+    <br>2. (Optional) Press the "Save Key" button to save the API key locally.</div>
     <input class="key" id="fullcontact-api-key" type="text">
 
     <div>
@@ -53,9 +29,9 @@
         </button>
     </div>
 
+    <div class="instructions">3. Click "Select CSV" and pick a CSV with names arranged either all in a single row or all in their own row.</div>
     <div>
-	<textarea class="response" readonly id="sample-csv-data">
-	</textarea>
+        <textarea class="feedback-box" readonly id="sample-csv-data"></textarea>
     </div>
 
     <div>
@@ -63,16 +39,32 @@
         <input type="file" id="select-csv">
     </div>
 
-
+    <div class="instructions">4. Click "Perform Request" to perform a batch request to FullContact on all users included in the CSV.</div>
     <div>
-        <textarea class="last" readonly id="fullcontact-response-data"></textarea>
+        <textarea class="feedback-box" readonly id="fullcontact-response-data"></textarea>
     </div>
 
     <div>
         <button class="perform btn btn-default" id="perform-fullcontact-request">Perform Request</button>
     </div>
-    <button class="perform btn btn-default" id="parse-and-download-csvs">Parse And Download CSVs</button>
-
+    <div class="instructions">5. Once you see data in the above textbox, click "Parse And Download CSVs" to
+        download the CSVs to your Downloads folder.</div>
+    <div>
+        <b>WARNING: All existing CSV files will be overwritten without warning if they exist within the Downloads folder.  Clicking the "Parse and Download CSVs" button will download the files with no additional feedback.</b>
+        <div class="instructions">CSVs that will be downloaded:
+            <ul>
+                <li>photos.csv</li>
+                <li>contact_info.csv</li>
+                <li>organizations.csv</li>
+                <li>demographics.csv</li>
+                <li>social_profiles.csv</li>
+                <li>metadata.csv</li>
+                <li>digital_footprint_topics.csv</li>
+                <li>digital_footprint_scores.csv</li>
+            </ul>
+        </div>
+        <button class="perform btn btn-default lastbutton" id="parse-and-download-csvs">Parse And Download CSVs</button>
+    </div>
 </div>
 
 

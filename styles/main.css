@@ -8,29 +8,21 @@ html, body {
     overflow-y: visible;
 }
 
-body.body-style {background:#39ACE6;
-} /*Teespring Blue */
-
-
-label.main-h1-style {
-    font-family: 'Source Sans Pro', sans-serif; 
-    font-weight: normal;
-    color:white;
-}
-
-h1.title {
-	text-align:center;
-}
-
-h2.title-two {
-	text-align:center;
+body.body-style {
+	background:#39ACE6;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: normal;
 	color:white;
 }
 
-h5.body {
-	color:white;
+h1.title, h2.title {
+	text-align:center;
 }
 
+.instructions {
+	font-size: 14px;
+	margin-top: 30px;
+}
 
 input.key {
 	height: 28px;
@@ -51,16 +43,9 @@ button.select-csv {
   	margin-top: 4px;
 }
 
-textarea.response {
+textarea.feedback-box {
 	height: 100px;
 	width: 100%;
-	margin-top: 30px;
-}
-
-textarea.last {
-	height: 300px;
-	width: 100%;
-	margin-top:30px;
 }
 
 button.perform {
@@ -68,4 +53,8 @@ button.perform {
 	color: black;
 	font-size: 10px;
 	margin-top: 4px;
+}
+
+button.lastbutton {
+	margin-bottom: 30px;
 }
