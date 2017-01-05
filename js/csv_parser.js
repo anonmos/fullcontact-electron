@@ -11,14 +11,16 @@ CsvParser.prototype.saveJsonDataAsCsvs = function (jsonData) {
     let EMAIL_BULK_REQUEST_PREFIX = "https://api.fullcontact.com/v2/person.json?email=";
     let contentsGraph = JSON.parse(jsonData);
 
-    let PHOTOS_FILE_NAME = documentsFolder + 'photos.csv';
-    let CONTACT_INFO_FILE_NAME = documentsFolder + 'contact_info.csv';
-    let ORGANIZATIONS_FILE_NAME = documentsFolder + 'organizations.csv';
-    let DEMOGRAPHICS_FILE_NAME = documentsFolder + 'demographics.csv';
-    let SOCIAL_PROFILES_FILE_NAME = documentsFolder + "social_profiles.csv";
-    let METADATA_FILE_NAME = documentsFolder + "metadata.csv";
-    let DIGITAL_FOOTPRINT_TOPICS_FILE_NAME = documentsFolder + 'digital_footprint_topics.csv';
-    let DIGITAL_FOOTPRINT_SCORES_FILE_NAME = documentsFolder + 'digital_footprint_scores.csv';
+    let FULLCONTACT_FILE_PREFIX = "fc-";
+
+    let PHOTOS_FILE_NAME = documentsFolder + FULLCONTACT_FILE_PREFIX + 'photos.csv';
+    let CONTACT_INFO_FILE_NAME = documentsFolder + FULLCONTACT_FILE_PREFIX + 'contact_info.csv';
+    let ORGANIZATIONS_FILE_NAME = documentsFolder + FULLCONTACT_FILE_PREFIX + 'organizations.csv';
+    let DEMOGRAPHICS_FILE_NAME = documentsFolder + FULLCONTACT_FILE_PREFIX + 'demographics.csv';
+    let SOCIAL_PROFILES_FILE_NAME = documentsFolder + FULLCONTACT_FILE_PREFIX + "social_profiles.csv";
+    let METADATA_FILE_NAME = documentsFolder + FULLCONTACT_FILE_PREFIX + "metadata.csv";
+    let DIGITAL_FOOTPRINT_TOPICS_FILE_NAME = documentsFolder + FULLCONTACT_FILE_PREFIX + 'digital_footprint_topics.csv';
+    let DIGITAL_FOOTPRINT_SCORES_FILE_NAME = documentsFolder + FULLCONTACT_FILE_PREFIX + 'digital_footprint_scores.csv';
 
     let photosColumnHeaders = ["email", "requestId", "typeName", "isPrimary", "type", "typeId", "url"];
     let contactInfoColumnHeaders = ["email", "requestId", "familyName", "givenName", "fullName", "websites"];
