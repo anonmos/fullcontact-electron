@@ -4,7 +4,8 @@
   "description": "A FullContact Electron App",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build-mac": "electron-packager ./ --appname=fullcontact-client --arch=x64 --platform=darwin --out=./bin/macOS"
   },
   "repository": "https://github.com/anonmos/fullcontact-electron",
   "author": "GitHub",
