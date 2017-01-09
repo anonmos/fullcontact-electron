@@ -50,7 +50,7 @@ always works (especially for the csv_parser module, which gets a little hairy).
 5. Request Rate Limiting -- FullContact's Batch API only allows for 20 requests to be made at a time.  This app splits the input CSV
 into sub-batches of 20 and requests each batch of 20 all at once.  FullContact's simultaneous request limit is 600/min.  A high enough
 number of e-mails will blow the top off of that limit, so a client side limit would be very nice.
-6. Documentation -- This file is the entirety of the documentation that exists, along with what the actual steps listed on the view
+6. Documentation -- This file is the entirety of the documentation that exists, along with the steps that are laid out within the main app view.
 7.  Additional FullContact API Client Implementations -- This client could be used for a whole host of different requests.
 Being able to use it as a multi-tool would be wonderful.
 8.  Bugfixes -- I haven't found any bugs yet, but I know they're lurking.  If you see it, fix it!
