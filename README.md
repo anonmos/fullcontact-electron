@@ -20,6 +20,7 @@ other users as a complete package.
 4. You should now be able to run the app normally on that Mac.
 
 _Note:_ There are several caviats here:
+
 1. These instructions are for building for macOS on a Mac.  You may have to figure out how to build on your target machine
   on your own. To do so, I recommend using [electron-packager](https://github.com/electron-userland/electron-packager)
 2. The binary for `electron-packager` may need to be installed globally in order to run `step 1` above.  To do this, run `npm install -g electron-packager`
