@@ -69,7 +69,7 @@ IO.prototype.sendAllBatchPeopleRequests = function (apiKey) {
                 let finalResult = JSON.parse(values[0]);
 
                 for (let i = 1; i < values.length; ++i) {
-                    finalResult.responses = extend(finalResult.responses, values[i].responses);
+                    finalResult.responses = Object.assign(finalResult.responses, JSON.parse(values[i]).responses);
                 }
 
                 mainContext.peopleResponse = finalResult;
@@ -124,26 +124,5 @@ IO.prototype.saveApiKey = function (key) {
 IO.prototype.loadApiKey = function () {
     return localStorage.getItem('apiKey');
 };
-
-function extend() {
-
-    let result = {}, obj;
-
-    for (let i = 0; i < arguments.length; i++) {
-        obj = arguments[i];
-        for (let key in obj) {
-            if (Object.prototype.toString.call(obj[key]) === '[object Object]') {
-                if (typeof result[key] === 'undefined') {
-                    result[key] = {};
-                }
-                result[key] = extend(result[key], obj[key]);
-            }
-            else {
-                result[key] = obj[key];
-            }
-        }
-    }
-    return result;
-}
 
 module.exports = new IO();
